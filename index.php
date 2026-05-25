@@ -21,6 +21,10 @@ $profile = [
 ];
 $dashboard_error = '';
 
+if ($is_logged_in && $is_admin_user) {
+    redirect('/complaint-system/admin/dashboard.php');
+}
+
 if ($is_logged_in && !$is_admin_user) {
     $user_id = (int) $_SESSION['user_id'];
     $profile_sql = 'SELECT name, email, created_at FROM users WHERE id = ? LIMIT 1';
